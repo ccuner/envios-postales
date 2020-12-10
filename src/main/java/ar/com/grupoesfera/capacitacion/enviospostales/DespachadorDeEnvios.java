@@ -20,6 +20,9 @@ public class DespachadorDeEnvios {
         else if(cantidadDePaquetes < 10){
             return Double.valueOf(80) * porcentajeDeAumento;
         }
+        else if(cantidadDePaquetes > 15){
+            return Double.valueOf(cantidadDePaquetes * 15) * porcentajeDeAumento * 0.95;
+        }
         return Double.valueOf(cantidadDePaquetes * 15) * porcentajeDeAumento;
     }
 
