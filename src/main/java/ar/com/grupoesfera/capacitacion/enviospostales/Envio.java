@@ -6,6 +6,8 @@ public class Envio {
 
     private List<Paquete> paquetes;
 
+    private Vehiculo vehiculo;
+
     public Envio(List<Paquete> paquetes) {
         this.paquetes = paquetes;
     }
@@ -24,5 +26,13 @@ public class Envio {
 
     public Double calcularPeso() {
         return null;
+    }
+
+    public Vehiculo getVehiculo() {
+        return vehiculo;
+    }
+
+    public void setVehiculo(Vehiculo vehiculo) {
+        this.vehiculo = vehiculo;
     }
 }

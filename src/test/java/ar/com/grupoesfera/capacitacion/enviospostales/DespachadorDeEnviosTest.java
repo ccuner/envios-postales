@@ -20,6 +20,14 @@ public class DespachadorDeEnviosTest {
     }
 
     @Test
+    public void conEnvioPorBicicletaTieneQueEnviarsePropina() {
+        dadoQueTengo0Envios();
+        dadoQueTengoUnEnvioConUnaCantidadDePaquetes(3);
+        dadoQueTengoAsignadoUnaBicicletaComoRepartidor();
+        cuandoCalculoElCosto();
+        entoncesVerificoQueElCostoEs(Double.valueOf(62));
+    }
+    @Test
     public void conMenosDe5PaquetesElCostoDebeSer50() {
         dadoQueTengo0Envios();
         dadoQueTengoUnEnvioConUnaCantidadDePaquetes(3);
@@ -58,6 +66,11 @@ public class DespachadorDeEnviosTest {
 
         entoncesVerificoQueElCostoEs(Double.valueOf(88));
     }
+
+    private void dadoQueTengoAsignadoUnaBicicletaComoRepartidor() {
+        doReturn(Vehiculo.BICICLETA).when(envio).getVehiculo();
+    }
+
 
     private void dadoQueTengo11Envios() {
         doReturn(11).when(repositorioDeEnvios).getCantidadDeEnviosDelDia();
