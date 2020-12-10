@@ -6,9 +6,19 @@ public class DespachadorDeEnvios {
     private RepositorioDeEnvios repositorioDeEnvios;
 
     public Double calcularCosto(Envio envio) {
+        Double costoTotal = calcularCostoBase(envio);
 
+        if (envio.getVehiculo() == Vehiculo.BICICLETA) {
+            String propina = System.getenv().get("PROPINA_BICICLETA");
+            costoTotal += Double.parseDouble(propina);
+        }
+        return costoTotal;
+    }
+
+    private Double calcularCostoBase(Envio envio) {
         Double porcentajeDeAumento = Double.valueOf(1);
         Integer cantidadDeEnviosDelDia = repositorioDeEnvios.getCantidadDeEnviosDelDia();
+
         if(cantidadDeEnviosDelDia > 10) {
             porcentajeDeAumento = Double.valueOf(1.1);
         }
@@ -24,7 +34,7 @@ public class DespachadorDeEnvios {
             return Double.valueOf(cantidadDePaquetes * 15) * porcentajeDeAumento * 0.95;
         }
         return Double.valueOf(cantidadDePaquetes * 15) * porcentajeDeAumento;
-    }
+    };
 
     public void setRepositorioDeEnvios(RepositorioDeEnvios repositorioDeEnvios) {
         this.repositorioDeEnvios = repositorioDeEnvios;
