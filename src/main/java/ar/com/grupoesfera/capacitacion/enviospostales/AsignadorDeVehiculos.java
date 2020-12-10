@@ -3,7 +3,10 @@ package ar.com.grupoesfera.capacitacion.enviospostales;
 public class AsignadorDeVehiculos {
     public Vehiculo asignarVehiculo(Envio envio) throws EsMuyPesadoException {
         Double peso = envio.calcularPeso();
-        if(peso < 5) {
+
+        if(peso <= 0.5){
+            return Vehiculo.DRON;
+        } else if(peso < 5) {
             return Vehiculo.BICICLETA;
         } else if (peso < 50) {
             return Vehiculo.AUTO;

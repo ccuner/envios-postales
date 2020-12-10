@@ -46,6 +46,13 @@ public class AsignadorDeVehiculosTest {
         cuandoSeAsignaUnVehiculo();
     }
 
+    @Test
+    public void debeAsignarDronCuandoElEnvioEsMenosDeMedioKg() throws EsMuyPesadoException {
+        dadoUnEnvioDe(0.2);
+        cuandoSeAsignaUnVehiculo();
+        entoncesVerificoQueELVehiculoEs(Vehiculo.DRON);
+    }
+
     private void dadoUnEnvioDe(Double peso) {
         envio = mock(Envio.class);
         doReturn(peso).when(envio).calcularPeso();
